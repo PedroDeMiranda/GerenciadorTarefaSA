@@ -9,6 +9,9 @@ import utils.Conexao;
 public class Usuario {
     private String email;
     private String senha;
+    int id;
+    String permissao;
+    
 
     
     // Inclusão de Usuario

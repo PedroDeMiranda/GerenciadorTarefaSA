@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public class Conexao {
 	public static Connection conectar() throws ClassNotFoundException {
 		Connection con = null;
-		String url = "jdbc:mysql://localhost:3306/controlefuncionario";
+		String url = "jdbc:mysql://localhost:3306/gerenciador_tarefas";
 		String user = "root";
 		String password = "";
 		try {

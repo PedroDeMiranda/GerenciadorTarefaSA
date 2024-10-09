@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
@@ -7,35 +7,40 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
   <style>
     body {
-      background: linear-gradient(to right, #007bff, #6c757d);
+      background-color: #007bff; /* Fundo azul */
       height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
+      margin: 0;
     }
     
     .card-login {
-      background: #fff;
-      border-radius: 15px;
-      padding: 20px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      width: 100%;
+      background: #fff; /* Fundo do cartão */
+      border-radius: 10px;
+      padding: 30px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
       max-width: 400px;
+      width: 100%;
     }
 
     .card-title {
       font-size: 24px;
       font-weight: bold;
       margin-bottom: 20px;
+      color: #333;
     }
 
     .form-control {
-      border-radius: 30px;
+      border-radius: 20px;
       padding: 10px 20px;
+      font-size: 14px;
+      background-color: #f9f9f9;
+      border: 1px solid #ddd;
     }
 
     .btn {
-      border-radius: 30px;
+      border-radius: 20px;
       padding: 10px;
       font-size: 16px;
       font-weight: bold;
@@ -51,6 +56,17 @@
     .btn-primary:hover {
       background-color: #0056b3;
     }
+
+    .btn-secondary {
+      background-color: #007bff;
+      border: none;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn-secondary:hover {
+      background-color: #5a6268;
+    }
+
 
     .container {
       display: flex;
@@ -69,15 +85,14 @@
         <form action="autenticarUsuario.jsp">
           <div class="form-group">
             <label for="email">Usuário</label>
-            <input type="text" id="email" name="email" class="form-control" placeholder="Digite seu usuário">
+            <input type="text" id="email" name="email" class="form-control" placeholder="Digite seu usuário" required>
           </div>
           <div class="form-group">
             <label for="senha">Senha</label>
-            <input type="password" id="senha" name="senha" class="form-control" placeholder="Digite sua senha">
+            <input type="password" id="senha" name="senha" class="form-control" placeholder="Digite sua senha" required>
           </div>
           <button type="submit" class="btn btn-primary btn-block">Login</button>
           <a href="signup.html" class="btn btn-secondary btn-block">Cadastrar-se</a>
-          <button type="reset" class="btn btn-danger btn-block">Cancelar</button>
         </form>
       </div>
     </div>
