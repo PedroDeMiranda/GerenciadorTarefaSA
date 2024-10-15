@@ -9,5 +9,22 @@ package loginUser;
  * @author julio_c_martini
  */
 public class pessoa_has_tarefa {
-    
+    private int PessoaId;
+    private int TarefaId;
+
+    public int getPessoaId() {
+        return PessoaId;
+    }
+
+    public void setPessoaId(int pessoaId) {
+        PessoaId = pessoaId;
+    }
+
+    public int getTarefaId() {
+        return TarefaId;
+    }
+
+    public void setTarefaId(int tarefaId) {
+        TarefaId = tarefaId;
+    }
 }

@@ -7,67 +7,36 @@ import java.sql.SQLException;
 import utils.Conexao;
 
 public class Usuario {
-    private String email;
-    private String senha;
-    int id;
-    String permissao;
-    
+    private int Id;
+    private String permissao;
+    private int PessoaId;
 
     
     // Inclusão de Usuario
-    public boolean incluirUsuario() throws ClassNotFoundException {
-        String sql = "INSERT INTO usuario values (?,?)";
-        Connection con = Conexao.conectar();
-        try {
-                PreparedStatement stm = con.prepareStatement(sql);
-                stm.setString(1, this.getEmail());
-                stm.setString(2, this.getSenha());
-                stm.execute();
-        } catch (SQLException e) {
-                System.out.println("Erro na inclusão do usuário");
-                return false;
-        }
-        return true;
-    }
+
     
-    // autenticacao do usuario
-    public Usuario autenticarUsuario() throws ClassNotFoundException {
-        Connection con = Conexao.conectar();
-        Usuario usu = null;
-        String sql = "SELECT email FROM usuario WHERE email = ? AND senha = ?     ";
-        try {
-            PreparedStatement stm = con.prepareStatement(sql);
-            stm.setString(1, this.getEmail());
-            stm.setString(2, this.getSenha());
-            ResultSet rs = stm.executeQuery();
-            if (rs.next()) {
-                usu = new Usuario();
-                usu.setEmail(rs.getString("email"));
-            }
-        } catch (SQLException e) {
-                System.out.println("Erro na consulta do usuario");
-                return null;
-        }
-        return usu;
-}
-    
-    
-    public String getEmail() {
-        return email;
+    //getters e setters
+    public int getId() {
+        return Id;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setId(int id) {
+        this.Id = id;
     }
 
-    public String getSenha() {
-        return senha;
+    public String getPermissao() {
+        return permissao;
     }
 
-    public void setSenha(String senha) {
-        this.senha = senha;
+    public void setPermissao(String permissao) {
+        this.permissao = permissao;
     }
-    
-    
-    
+
+    public int getPessoaId() {
+        return PessoaId;
+    }
+
+    public void setPessoaId(int pessoaId) {
+        PessoaId = pessoaId;
+    }
 }
