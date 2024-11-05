@@ -1,0 +1,268 @@
+<html> 
+ <head>
+  <meta charset="UTF-8">   
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap" rel="stylesheet"/>
+ </head>
+ <body class="bg-gray-100 font-roboto">
+  <nav class="bg-blue-600 p-4 flex justify-between items-center">
+   <div class="flex items-center">
+    <img alt="Logo" class="mr-4" height="40" src="imagens/logo.png" width="40"/>
+    <a class="text-white text-lg font-bold" href="#">
+     Tarefas
+    </a>
+   </div>
+   <div class="flex space-x-8">
+    <a class="text-white" href="Home.html">
+     Home
+    </a>
+    <a class="text-white" href="Colaboradores.html">
+     Colaboradores
+    </a>
+   </div>
+   <div class="flex items-center">
+    <i class="fas fa-user-circle text-white text-2xl mr-2">
+    </i>
+    <span class="text-white">
+     User
+    </span>
+   </div>
+  </nav>
+  <div class="container mx-auto mt-8">
+   <h1 class="text-3xl font-bold text-center mb-8">
+    TAREFAS
+   </h1>
+   <div class="flex justify-center space-x-4 mb-8">
+    <button class="flex items-center border-2 border-black rounded-full px-4 py-2">
+     <span class="mr-2">
+      Adicionar Tarefa
+     </span>
+     <i class="fas fa-plus-circle text-blue-600">
+     </i>
+    </button>
+    <button class="flex items-center border-2 border-black rounded-full px-4 py-2">
+     <span class="mr-2">
+      Gerar Relatório
+     </span>
+     <i class="fas fa-file-alt text-blue-600">
+     </i>
+    </button>
+    <button class="flex items-center border-2 border-black rounded-full px-4 py-2">
+     <span class="mr-2">
+      Pesquise a tarefa
+     </span>
+     <i class="fas fa-search text-blue-600">
+     </i>
+    </button>
+   </div>
+   <table class="min-w-full bg-white">
+    <thead>
+     <tr>
+      <th class="py-2 px-4 border-b">
+       Descrição
+      </th>
+      <th class="py-2 px-4 border-b">
+       Encarregado
+      </th>
+      <th class="py-2 px-4 border-b">
+       Data de inclusão
+      </th>
+      <th class="py-2 px-4 border-b">
+       Prazo
+      </th>
+      <th class="py-2 px-4 border-b">
+       Status
+      </th>
+     </tr>
+    </thead>
+    <tbody>
+     <tr class="cursor-pointer" onclick="openModal('Tela de Login', 'Gerson', '1', '2/10', '10/10', 'Desenvolvimento', 'Feito')">
+      <td class="py-2 px-4 border-b">
+       Tela de Lo...
+      </td>
+      <td class="py-2 px-4 border-b">
+       Gerson
+      </td>
+      <td class="py-2 px-4 border-b">
+       2/10
+      </td>
+      <td class="py-2 px-4 border-b">
+       10/10
+      </td>
+      <td class="py-2 px-4 border-b">
+       <span class="bg-green-500 text-white px-2 py-1 rounded-full">
+        Feito
+       </span>
+      </td>
+     </tr>
+     <tr class="cursor-pointer" onclick="openModal('Cadastro de Usuário', 'Paulo', '2', '4/10', '13/10', 'Desenvolvimento', 'Feito')">
+      <td class="py-2 px-4 border-b">
+       Cadastro d...
+      </td>
+      <td class="py-2 px-4 border-b">
+       Paulo
+      </td>
+      <td class="py-2 px-4 border-b">
+       4/10
+      </td>
+      <td class="py-2 px-4 border-b">
+       13/10
+      </td>
+      <td class="py-2 px-4 border-b">
+       <span class="bg-green-500 text-white px-2 py-1 rounded-full">
+        Feito
+       </span>
+      </td>
+     </tr>
+     <tr class="cursor-pointer" onclick="openModal('Diagrama de Classes', 'Thiago', '3', '8/10', '13/10', 'Desenvolvimento', 'Fazendo')">
+      <td class="py-2 px-4 border-b">
+       Diagrama d...
+      </td>
+      <td class="py-2 px-4 border-b">
+       Thiago
+      </td>
+      <td class="py-2 px-4 border-b">
+       8/10
+      </td>
+      <td class="py-2 px-4 border-b">
+       13/10
+      </td>
+      <td class="py-2 px-4 border-b">
+       <span class="bg-yellow-500 text-white px-2 py-1 rounded-full">
+        Fazendo
+       </span>
+      </td>
+     </tr>
+     <tr class="cursor-pointer" onclick="openModal('Relatório de Vendas', 'Paulo', '4', '12/10', '16/10', 'Relatório', 'A Fazer')">
+      <td class="py-2 px-4 border-b">
+       Relatório...
+      </td>
+      <td class="py-2 px-4 border-b">
+       Paulo
+      </td>
+      <td class="py-2 px-4 border-b">
+       12/10
+      </td>
+      <td class="py-2 px-4 border-b">
+       16/10
+      </td>
+      <td class="py-2 px-4 border-b">
+       <span class="bg-red-500 text-white px-2 py-1 rounded-full">
+        A Fazer
+       </span>
+      </td>
+     </tr>
+     <tr class="cursor-pointer" onclick="openModal('Casos de Uso', 'Rodrigo', '5', '9/10', '20/10', 'Análise', 'Fazendo')">
+      <td class="py-2 px-4 border-b">
+       Casos de Us...
+      </td>
+      <td class="py-2 px-4 border-b">
+       Rodrigo
+      </td>
+      <td class="py-2 px-4 border-b">
+       9/10
+      </td>
+      <td class="py-2 px-4 border-b">
+       20/10
+      </td>
+      <td class="py-2 px-4 border-b">
+       <span class="bg-yellow-500 text-white px-2 py-1 rounded-full">
+        Fazendo
+       </span>
+      </td>
+     </tr>
+    </tbody>
+   </table>
+  </div>
+  <div class="fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center hidden" id="taskModal">
+   <div class="bg-white p-8 rounded-lg shadow-lg w-1/2">
+    <h2 class="text-2xl font-bold mb-4">
+     Task Details
+    </h2>
+    <p class="mb-2">
+     <strong>
+      Description:
+     </strong>
+     <span id="modalDescription">
+     </span>
+    </p>
+    <p class="mb-2">
+     <strong>
+      Assigned to:
+     </strong>
+     <span id="modalAssignedTo">
+     </span>
+    </p>
+    <p class="mb-2">
+     <strong>
+      ID:
+     </strong>
+     <span id="modalID">
+     </span>
+    </p>
+    <p class="mb-2">
+     <strong>
+      Start Date:
+     </strong>
+     <span id="modalStartDate">
+     </span>
+    </p>
+    <p class="mb-2">
+     <strong>
+      Deadline:
+     </strong>
+     <span id="modalDeadline">
+     </span>
+    </p>
+    <p class="mb-2">
+     <strong>
+      Task Type:
+     </strong>
+     <span id="modalTaskType">
+     </span>
+    </p>
+    <p class="mb-2">
+     <strong>
+      Status:
+     </strong>
+     <span id="modalStatus">
+     </span>
+    </p>
+    <div class="flex justify-end space-x-4 mt-4">
+     <button class="bg-blue-500 text-white px-4 py-2 rounded" onclick="editTask()">
+      Edit
+     </button>
+     <button class="bg-red-500 text-white px-4 py-2 rounded" onclick="deleteTask()">
+      Delete
+     </button>
+     <button class="bg-gray-500 text-white px-4 py-2 rounded" onclick="closeModal()">
+      Close
+     </button>
+    </div>
+   </div>
+  </div>
+  <script>
+   function openModal(description, assignedTo, id, startDate, deadline, taskType, status) {
+    document.getElementById('modalDescription').innerText = description;
+    document.getElementById('modalAssignedTo').innerText = assignedTo;
+    document.getElementById('modalID').innerText = id;
+    document.getElementById('modalStartDate').innerText = startDate;
+    document.getElementById('modalDeadline').innerText = deadline;
+    document.getElementById('modalTaskType').innerText = taskType;
+    document.getElementById('modalStatus').innerText = status;
+    document.getElementById('taskModal').classList.remove('hidden');
+   }
+   function closeModal() {
+    document.getElementById('taskModal').classList.add('hidden');
+   }
+   function editTask() {
+    alert('Edit task functionality not implemented yet.');
+   }
+   function deleteTask() {
+    alert('Delete task functionality not implemented yet.');
+   }
+  </script>
+ </body>
+</html>

@@ -1,0 +1,33 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Página de Login</title>
+    <link rel="stylesheet" href="estilos/styleLogin.css">
+</head>
+
+<body>
+    <div class="login-container">
+        <h1>Login</h1>
+
+        <!-- Formulário de login enviando os dados para o AutenticarUsuario.jsp -->
+        <form id="loginForm" action="AutenticarUsuario.jsp" method="POST">
+            <input type="text" id="username" name="username" placeholder="Digite o usuário" required>
+            <input type="password" id="password" name="password" placeholder="Digite a senha" required>
+            <div class="error" id="attemptMessage"></div> <!-- Mensagem de erro aparece aqui -->
+            <input type="hidden" id="attempts" name="attempts" value="3"> <!-- Campo hidden para tentativas -->
+            
+            <button type="submit" id="loginBtn">Login</button>
+        </form>
+        <button id="register">Cadastrar</button>
+    </div>
+    <script>
+        document.getElementById("register").addEventListener("click", function() {
+            window.location.href = "CadastrarTela.html";
+        });
+
+        document.getElementById("loginBtn").addEventListener("click", function() {
+            window.location.href = "AutenticarUsuario.jsp";
+        });
+    </script>
+</body>
+</html>

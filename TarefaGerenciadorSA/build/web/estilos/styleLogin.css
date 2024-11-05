@@ -1,0 +1,67 @@
+body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: url('../imagens/BillsHub_BackGround.png');
+            font-family: Arial, sans-serif;
+        }
+        .login-container {
+            background-color: white;
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 400px; /* Aumenta a largura */
+            height: auto;
+           
+            position: absolute; /* Define posicionamento absoluto */
+            top: 50%;  /* Centraliza verticalmente */
+            left: 25%; /* Ajuste conforme necessário para mover horizontalmente */
+            transform: translate(-50%, -50%); /* Centraliza no eixo Y */
+        }
+        .login-container h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: black;
+        }
+        .login-container input[type="text"],
+        .login-container input[type="password"] {
+            width: 94%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 2px solid #0047FF;
+            border-radius: 10px;
+            font-size: 16px;
+            color: grey;
+        }
+        .login-container a {
+            display: block;
+            margin: 10px 0;
+            color: grey;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .login-container .error {
+            color: red;
+            font-size: 14px;
+            margin: 10px 0;
+        }
+        .login-container .error i {
+            margin-right: 5px;
+        }
+        .login-container button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            color: white;
+            background-color: #0047FF;
+            cursor: pointer;
+        }
+        .login-container button#register {
+            background-color: #007BFF;
+        }

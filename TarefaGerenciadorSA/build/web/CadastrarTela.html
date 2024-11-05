@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pagina de Cadastro</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="estilos/styleLogin.css">
+</head>
+<body>
+
+<div class="login-container">
+    <h1>Cadastrar</h1>
+
+    <form action="Cadastro.jsp" method="post" onsubmit="return validarSenhas()  ;">
+        <label>
+            <input type="radio" name="role" value="Usuario" onclick="MostrarCampo()"> Usuário
+        </label>
+        <label>
+            <input type="radio" name="role" value="Dev" onclick="MostrarCampo()"> Desenvolvedor
+        </label>
+        
+        <input type="text" placeholder="Digite o usuario" name="email" required>
+        <br>
+        <input type="password" placeholder="Digite a senha" id="senha" name="senha" required>
+        <br>
+        <input type="password" placeholder="Confirme a senha" id="confirmaSenha" name="confirmaSenha" required>
+        
+        <div id="campoUsuario" style="display:none;">
+            <label for="analistaAdmin">Escolha a função:</label>
+            <select id="analistaAdmin" name="analistaAdmin">
+                <option value="Analista">Analista</option>
+                <option value="Admin">Administrador</option>
+            </select>
+        </div>
+
+        <div id="campoDesenvolvedor" style="display:none;">
+            <label for="devName">Nome do Desenvolvedor:</label>
+            <input type="text" id="devName" name="devName">
+        </div>
+        
+        <button type="submit" id="Cadastra">Cadastrar-se</button>
+        
+        <button type="submit" id="voltar">Voltar</button>
+
+    </form>
+</div>
+
+<script>
+function MostrarCampo() {
+    const role = document.querySelector('input[name="role"]:checked').value;
+    document.getElementById('campoUsuario').style.display = role === 'Usuario' ? 'block' : 'none';
+    document.getElementById('campoDesenvolvedor').style.display = role === 'Dev' ? 'block' : 'none';
+}
+
+function validarSenhas() {
+    const senha = document.getElementById("senha").value;
+    const confirmaSenha = document.getElementById("confirmaSenha").value;
+
+    // Verifica se uma opção de 'role' foi selecionada
+    const roleSelecionada = document.querySelector('input[name="role"]:checked');
+    if (!roleSelecionada) {
+        alert("Por favor, selecione um tipo de pessoa (Usuário ou Desenvolvedor).");
+        return false; // Impede a submissão do formulário
+    }
+
+    // Verifica se as senhas são iguais
+    if (senha !== confirmaSenha) {
+        alert("As senhas não coincidem. Tente novamente.");
+        return false; // Impede a submissão do formulário
+    }
+    
+    return true; // Permite a submissão do formulário
+}
+
+    document.getElementById("voltar").addEventListener("click", function() {
+        window.location.href = "index.html";
+    });
+</script>
+
+</body>
+</html>
