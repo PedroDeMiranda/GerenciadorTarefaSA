@@ -17,21 +17,24 @@ public class Tarefa {
     private int IdTipoTarefa;
     
     //Cadastrar
-    public void Cadastrar(Tarefa tarefa) {
-        String sql = "INSERT INTO tarefa (descricao, data_criacao, prazo, status, tipo_tarefa_id) VALUES (?, ?, ?, ?, ?)";
-        try (Connection con = Conexao.conectar();
-             PreparedStatement stmt = con.prepareStatement(sql)) {
-            stmt.setString(1, tarefa.getDescricao());
-            stmt.setDate(2, new java.sql.Date(tarefa.getDataCriacao().getTime()));
-            stmt.setDate(3, new java.sql.Date(tarefa.getPrazo().getTime()));
-            stmt.setString(4, tarefa.getStatus());
-            stmt.setInt(5, tarefa.getIdTipoTarefa());
-            stmt.executeUpdate();
-            System.out.println("Tarefa cadastrada com sucesso.");
-        } catch (SQLException | ClassNotFoundException e) {
-            System.out.println("Erro ao cadastrar tarefa: " + e.getMessage());
-        }
+    public boolean Cadastrar() {
+    String sql = "INSERT INTO tarefa (descricao, prazo, tipo_tarefa_id) VALUES (?, ?, ?)";
+    try (Connection con = Conexao.conectar();
+         PreparedStatement stmt = con.prepareStatement(sql)) {   
+        
+        stmt.setString(1, this.getDescricao());
+        stmt.setDate(2, new java.sql.Date(this.getPrazo().getTime())); 
+        stmt.setInt(3, this.getIdTipoTarefa());
+        
+        stmt.executeUpdate();
+        System.out.println("Tarefa cadastrada com sucesso.");
+    } catch (SQLException | ClassNotFoundException e) {
+        System.out.println("Erro ao cadastrar tarefa: " + e.getMessage());
+        return false;
     }
+    return true;
+}
+
     
     //Conslutar
     public Tarefa Consultar(int id) {
@@ -57,34 +60,40 @@ public class Tarefa {
     }
 
     //Alterar
-    public void Alterar(Tarefa tarefa) {
-        String sql = "UPDATE tarefa SET descricao = ?, data_criacao = ?, prazo = ?, status = ?, tipo_tarefa_id = ? WHERE id = ?";
+    public boolean Alterar() {
+        String sql = "UPDATE tarefa SET descricao = ?, prazo = ?, status = ?, tipo_tarefa_id = ? WHERE id = ?";
         try (Connection con = Conexao.conectar();
-             PreparedStatement stmt = con.prepareStatement(sql)) {
-            stmt.setString(1, tarefa.getDescricao());
-            stmt.setDate(2, new java.sql.Date(tarefa.getDataCriacao().getTime()));
-            stmt.setDate(3, new java.sql.Date(tarefa.getPrazo().getTime()));
-            stmt.setString(4, tarefa.getStatus());
-            stmt.setInt(5, tarefa.getIdTipoTarefa());
-            stmt.setInt(6, tarefa.getId());
+            PreparedStatement stmt = con.prepareStatement(sql)) {
+            stmt.setString(1, this.getDescricao());
+            stmt.setDate(2, new java.sql.Date(this.getPrazo().getTime()));
+            stmt.setString(3, this.getStatus());
+            stmt.setInt(4, this.getIdTipoTarefa());
+            stmt.setInt(5, this.getId());
             stmt.executeUpdate();
-            System.out.println("Tarefa atualizada com sucesso.");
+            
         } catch (SQLException | ClassNotFoundException e) {
             System.out.println("Erro ao atualizar tarefa: " + e.getMessage());
-        }
+            return false;
+            }
+        System.out.println("Tarefa atualizada com sucesso.");
+        return true;
     }
 
+
     //Excluir
-    public void Excluir(int id) {
+    public boolean Excluir() {
         String sql = "DELETE FROM tarefa WHERE id = ?";
         try (Connection con = Conexao.conectar();
-             PreparedStatement stmt = con.prepareStatement(sql)) {
-            stmt.setInt(1, id);
+            PreparedStatement stmt = con.prepareStatement(sql)) {
+            stmt.setInt(1, this.getId());
             stmt.executeUpdate();
-            System.out.println("Tarefa excluída com sucesso.");
+            
         } catch (SQLException | ClassNotFoundException e) {
             System.out.println("Erro ao excluir tarefa: " + e.getMessage());
+            return false;
         }
+        System.out.println("Tarefa excluída com sucesso.");
+        return true;
     }
     
     

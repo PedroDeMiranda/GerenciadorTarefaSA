@@ -45,7 +45,7 @@ public class Desenvolvedor extends Pessoa{
         }
 
     } catch (SQLException e) {
-        System.out.println("Erro na inclusão do usuário: " + e.getMessage());
+        System.out.println("Erro na inclusão do desenvolvedor: " + e.getMessage());
         return false;
     }
     return true;
@@ -97,8 +97,6 @@ public class Desenvolvedor extends Pessoa{
             System.out.println("Erro ao deletar desenvolvedor: " + ex.getMessage());
         }
     }
-    
-    
 
     //getters e setters
     public int getId() {

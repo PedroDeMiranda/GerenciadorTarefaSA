@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import utils.Conexao;
@@ -13,17 +14,19 @@ public class Usuario extends Pessoa{
     private String permissao;
     private int PessoaId;
 
-    public void Cadastrar(Usuario usuario) {
+    public boolean Cadastrar() throws ClassNotFoundException {
     String sqlPessoa = "INSERT INTO pessoa (funcao, email, senha) VALUES (?, ?, ?)";
     String sqlUsuario = "INSERT INTO usuario (permissao, pessoa_id) VALUES (?, ?)";
     
-    try (Connection con = Conexao.conectar();
-         PreparedStatement stmtPessoa = con.prepareStatement(sqlPessoa, PreparedStatement.RETURN_GENERATED_KEYS)) {
-         
+    Connection con = Conexao.conectar();
+
+    try {
+        
+        PreparedStatement stmtPessoa = con.prepareStatement(sqlPessoa, Statement.RETURN_GENERATED_KEYS);
         // Insere a pessoa
-        stmtPessoa.setString(1, usuario.getFuncao());
-        stmtPessoa.setString(2, usuario.getUser()); // Corrigido para getEmail()
-        stmtPessoa.setString(3, usuario.getSenha());
+        stmtPessoa.setString(1, this.getFuncao());
+        stmtPessoa.setString(2, this.getUser()); 
+        stmtPessoa.setString(3, this.getSenha());
         stmtPessoa.executeUpdate();
 
         // Obtém o ID gerado da pessoa
@@ -32,17 +35,22 @@ public class Usuario extends Pessoa{
             int pessoaId = generatedKeys.getInt(1); // O ID gerado
             
             // Insere o usuario com o ID da pessoa
-            try (PreparedStatement stmtUsuario = con.prepareStatement(sqlUsuario)) {
-                stmtUsuario.setString(1, usuario.getPermissao()); // Verifique se `permissao` é correto aqui
+            PreparedStatement stmtUsuario = con.prepareStatement(sqlUsuario);
+                stmtUsuario.setString(1, this.getPermissao()); // Verifique se `permissao` é correto aqui
                 stmtUsuario.setInt(2, pessoaId);
                 stmtUsuario.executeUpdate();
                 
-                System.out.println("Usuario adicionado com sucesso!");
-            }
+                System.out.println("Desenvolvedor adicionado com sucesso!");
+        } else {
+            System.out.println("Erro ao obter o ID da pessoa.");
+            return false;
         }
-            } catch (SQLException | ClassNotFoundException ex) {
-                System.out.println("Erro ao adicionar usuario: " + ex.getMessage());
-            }
+            
+        } catch (SQLException e) {
+        System.out.println("Erro na inclusão do usuário: " + e.getMessage());
+        return false;
+    }
+    return true;
 }
 
     public void Alterar(Usuario usuario, int idAlterar) {

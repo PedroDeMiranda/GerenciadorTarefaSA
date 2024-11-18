@@ -16,7 +16,7 @@ public class Main {
             System.out.println("Banco conectado com sucesso");
         }
     }
-
+    
     public static Date stringDate(String string) throws ParseException {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         java.util.Date utilDate = sdf.parse(string);

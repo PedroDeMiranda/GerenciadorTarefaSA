@@ -35,10 +35,29 @@
         }
         
     } else if ("Usuario".equals(vFuncao)) {
-        out.println("<script>");
-        out.println("alert('usuario');");
-        out.println("window.location.href = 'CadastrarTela.html';");
-        out.println("</script>");
+        
+        Usuario usu = new Usuario();
+        
+        usu.setFuncao(vFuncao);
+        usu.setUser(vEmail);
+        usu.setSenha(vSenha);
+        
+        String permissao = request.getParameter("analistaAdmin");
+        usu.setPermissao(permissao);
+        
+        if (usu.Cadastrar()) {
+            out.println("<script>");
+            out.println("alert('Usuario cadastrado');");
+            out.println("window.location.href = 'index.html';");
+            out.println("</script>");  
+            
+        } else {
+            out.println("<script>");
+            out.println("alert('Erro: Usuario não cadastrado, esse nome ja está sendo ultilizado');");
+            out.println("window.location.href = 'CadastrarTela.html';");
+            out.println("</script>");
+        }
+        
     } else {
         out.println("<script>");
         out.println("alert('Algo deu Errado');");
